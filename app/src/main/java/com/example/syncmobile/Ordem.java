@@ -1,18 +1,18 @@
 package com.example.syncmobile;
 
 public class Ordem {
-    private String id;
+    private Integer id;
     private String dataOrdem;
     private String valorOrdem;
     private String status;
     private String nomeUsuario;
     private String observacao;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String numero_ordem) {
+    public void setId(Integer numero_ordem) {
         this.id = numero_ordem;
     }
 
