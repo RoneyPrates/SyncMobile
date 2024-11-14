@@ -1,8 +1,11 @@
 package com.example.syncmobile;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,8 @@ public class OrdensDeComprasActivity extends AppCompatActivity {
     private List<Ordem> ordens;
     private ListView ordensListView;
     private TextView errorMessageTextView;
+    private OrdemAdapter ordemAdapter;
+    private EditText filtroEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +33,34 @@ public class OrdensDeComprasActivity extends AppCompatActivity {
 
         ordensListView = findViewById(R.id.ordensListView);
         errorMessageTextView = findViewById(R.id.error_message);
+        filtroEditText = findViewById(R.id.filtroEditText);
 
         ordens = new ArrayList<>();
-        fetchOrders();
+
+        String ipServidor = getIntent().getStringExtra("IP_SERVIDOR");
+        if (ipServidor != null) {
+            fetchOrders(ipServidor);
+        } else {
+            showError("Erro: IP não encontrado.");
+        }
+
+        filtroEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ordemAdapter.filtrarOrdens(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
-    private void fetchOrders() {
+    private void fetchOrders(String ipServidor) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.3.52:8080")
+                .baseUrl("http://" + ipServidor + ":8080")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -48,7 +73,7 @@ public class OrdensDeComprasActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     ordens.clear();
                     ordens.addAll(response.body());
-                    OrdemAdapter ordemAdapter = new OrdemAdapter(OrdensDeComprasActivity.this, ordens);
+                    ordemAdapter = new OrdemAdapter(OrdensDeComprasActivity.this, ordens);
                     ordensListView.setAdapter(ordemAdapter);
                     errorMessageTextView.setVisibility(View.GONE);
                 } else {
@@ -59,8 +84,8 @@ public class OrdensDeComprasActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Ordem>> call, Throwable t) {
-                Log.e("OrdensDeCompras", "Falha na conexão: ", t);
-                showError("Erro ao carregar ordens.");
+                Log.e("OrdensDeCompras", "Falha na conexão: " + t.getMessage());
+                showError("Falha na conexão com o servidor.");
             }
         });
     }

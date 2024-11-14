@@ -24,9 +24,13 @@ public class Ordem {
         this.dataOrdem = data_ordem;
     }
 
-    public String getValorOrdem() {return valorOrdem;}
+    public String getValorOrdem() {
+        return valorOrdem;
+    }
 
-    public void setValorOrdem(String valorOrdem) {this.valorOrdem = valorOrdem;}
+    public void setValorOrdem(String valorOrdem) {
+        this.valorOrdem = valorOrdem;
+    }
 
     public String getStatus() {
         return status;
@@ -36,11 +40,19 @@ public class Ordem {
         this.status = status;
     }
 
-    public String getNomeUsuario() {return nomeUsuario;}
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
 
-    public void setNomeUsuario(String nomeUsuario) {this.nomeUsuario = nomeUsuario;}
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
 
-    public String getObservacao() {return observacao;}
+    public String getObservacao() {
+        return observacao;
+    }
 
-    public void setObservacao(String observacao) {this.observacao = observacao;}
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
 }

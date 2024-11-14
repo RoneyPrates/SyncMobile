@@ -3,61 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#D3D3D3"
-    android:padding="120dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:padding="16dp"
+    android:background="@drawable/ordem_background"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/numeroOrdem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:gravity="left"
-        android:text="Número da Ordem: " />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Número da Ordem: " />
 
     <TextView
         android:id="@+id/dataOrdem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:gravity="left"
-        android:text="Data da Ordem: " />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Data da Ordem: " />
 
     <TextView
         android:id="@+id/valorOrdem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:gravity="left"
-        android:text="Valor da Ordem: " />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Valor da Ordem: " />
 
     <TextView
         android:id="@+id/statusOrdem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:gravity="left"
-        android:text="Status da Ordem: " />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Status da Ordem: " />
 
     <TextView
         android:id="@+id/nomeUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:gravity="left"
-        android:text="Nome do Usuário: " />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Nome do Usuário: " />
 
     <TextView
         android:id="@+id/observacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:gravity="left"
-        android:text="Observação: " />
-
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+    android:textColor="#000000"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:text="Observação: " />
 </LinearLayout>

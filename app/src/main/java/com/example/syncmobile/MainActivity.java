@@ -2,6 +2,7 @@ package com.example.syncmobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
+    private EditText ipEditText;  // Novo campo para IP
     private TextView errorMessageTextView;
 
     @Override
@@ -20,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         emailEditText = findViewById(R.id.email);
-        passwordEditText = findViewById(R.id.password);
+        passwordEditText = findViewById(R.id.senha);
+        ipEditText = findViewById(R.id.ipServidor);
         errorMessageTextView = findViewById(R.id.error_message);
         Button entrarButton = findViewById(R.id.entrar);
 
@@ -34,10 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void validateLogin() {
         String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+        String senha = passwordEditText.getText().toString();
+        String ipServidor = ipEditText.getText().toString();
 
-        if (email.equals("admin") && password.equals("admin")) {
+        if (ipServidor.isEmpty()) {
+            errorMessageTextView.setText("Por favor, insira o IP do servidor.");
+            return;
+        }
+
+        if ("admin".equals(email) && "admin".equals(senha)) {
             Intent intent = new Intent(MainActivity.this, OrdensDeComprasActivity.class);
+            intent.putExtra("IP_SERVIDOR", ipServidor);
             startActivity(intent);
             finish();
         } else {

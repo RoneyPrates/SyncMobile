@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Nome da Filial"
+            android:text="Filial"
             android:textColor="#dddddd"
             android:textSize="18sp"
             android:padding="8dp" />
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Nome do Usuário"
+            android:text="Usuário"
             android:textColor="#dddddd"
             android:textSize="16sp"
             android:padding="8dp" />
@@ -46,26 +46,22 @@
         android:id="@+id/filtroEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Filtrar ordens"
-        android:padding="8dp" />
-
-    <Button
-        android:id="@+id/aplicarFiltros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aplicar Filtros"
-        android:layout_marginTop="8dp" />
+        android:hint="Buscar Ordem"
+        android:padding="8dp"
+        android:background="@android:drawable/edit_text" />
 
     <ListView
         android:id="@+id/ordensListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp" />
 
     <TextView
         android:id="@+id/error_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
-
+        android:visibility="gone"
+        android:textColor="#ff0000" />
 </LinearLayout>
